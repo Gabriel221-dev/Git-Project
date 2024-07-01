@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");

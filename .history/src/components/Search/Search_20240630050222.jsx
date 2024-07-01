@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
@@ -31,7 +31,9 @@ function Search({ setData, setIsLoading }) {
       const response = await fetch(`https://api.github.com/users/${userName}`);
       if (!response.ok) {
         if (response.status === 404) {
-          throw new Error("User not found.");
+          throw new Error(
+            "User not found. Please check the username and try again."
+          );
         } else if (response.status === 403) {
           throw new Error("API rate limit exceeded. Please try again later.");
         } else {
@@ -72,7 +74,7 @@ function Search({ setData, setIsLoading }) {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           type="text"
-          placeholder="Enter Github Username..."
+          placeholder="Search Github Username..."
         />
       </div>
       <div>
@@ -82,7 +84,6 @@ function Search({ setData, setIsLoading }) {
         >
           Search
         </button>
-        <div> {error && <p className="text-errorRed">{error}</p>}</div>
       </div>
     </div>
   );

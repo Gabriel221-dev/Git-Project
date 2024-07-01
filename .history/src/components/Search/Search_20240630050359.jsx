@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
@@ -72,9 +72,10 @@ function Search({ setData, setIsLoading }) {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           type="text"
-          placeholder="Enter Github Username..."
+          placeholder="Search Github Username..."
         />
       </div>
+      {error && <p className="text-errorRed">{error}</p>}
       <div>
         <button
           onClick={handleClick}
@@ -82,7 +83,6 @@ function Search({ setData, setIsLoading }) {
         >
           Search
         </button>
-        <div> {error && <p className="text-errorRed">{error}</p>}</div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
@@ -82,7 +82,7 @@ function Search({ setData, setIsLoading }) {
         >
           Search
         </button>
-        <div> {error && <p className="text-errorRed">{error}</p>}</div>
+        {/* <div> {error && <p className="text-errorRed">{error}</p>}</div> */}
       </div>
     </div>
   );
