@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
-  const [error, setError] = useState("");
   const handleClick = async () => {
     setIsLoading(true);
-    setError("");
     const data = await fetch(`https://api.github.com/users/${userName}`);
-    if (!data.ok) {
-      if (data.status === 404) {
+    if (!Response.ok) {
+      if (Response.status === 404) {
         throw new Error("user not found");
       } else {
         throw new Error("something went wrong. Please try again");
@@ -16,7 +14,6 @@ function Search({ setData, setIsLoading }) {
     }
     const userData = await data.json();
     setData(userData);
-    setError(error.message);
     setIsLoading(false);
     console.log(userData);
   };

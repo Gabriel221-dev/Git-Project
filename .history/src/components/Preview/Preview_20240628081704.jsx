@@ -112,7 +112,7 @@ function Preview({
           </div>
         </div>
       ) : (
-        <p> No user data available</p>
+        <p> Data not found</p>
       )}
     </div>
   );

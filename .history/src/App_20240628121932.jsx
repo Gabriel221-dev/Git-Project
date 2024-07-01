@@ -47,7 +47,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className="flex flex-col gap-5 h-screen w-100%  justify-center items-center bg-dark-bg">
+    <div className="flex flex-col gap-5 h-screen w-100% justify-content items-center bg-dark-bg">
       <Search setData={setData} setIsLoading={setIsLoading} />
       {data && (
         <Preview

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
-  const [error, setError] = useState("");
   const handleClick = async () => {
     setIsLoading(true);
     setError("");
@@ -16,7 +15,6 @@ function Search({ setData, setIsLoading }) {
     }
     const userData = await data.json();
     setData(userData);
-    setError(error.message);
     setIsLoading(false);
     console.log(userData);
   };

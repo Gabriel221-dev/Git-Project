@@ -41,6 +41,7 @@ import { useState } from "react";
 import "./App.css";
 import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
+import DarkAndLightBtn from "./components/DarkAndLightBtn/DarkAndLightBtn";
 
 function App() {
   const [data, setData] = useState(null);
@@ -48,6 +49,7 @@ function App() {
 
   return (
     <div className="flex flex-col gap-5 h-screen w-100%  justify-center items-center bg-dark-bg">
+      <DarkAndLightBtn />
       <Search setData={setData} setIsLoading={setIsLoading} />
       {data && (
         <Preview

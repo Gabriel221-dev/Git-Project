@@ -3,6 +3,18 @@ import React, { useEffect, useState } from "react";
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
   const [error, setError] = useState("");
+  const validateUserName = (name) => {
+    // Ensure the username is not empty and follows GitHub's username rules
+    const regex = /^[a-zA-Z0-9-]+$/;
+    if (!name.trim()) {
+      return "Please enter a GitHub username.";
+    } else if (!regex.test(name)) {
+      return "Username can only contain alphanumeric characters or hyphens.";
+    } else if (name.length > 39) {
+      return "Username cannot be longer than 39 characters.";
+    }
+    return "";
+  };
   const handleClick = async () => {
     setIsLoading(true);
     setError("");

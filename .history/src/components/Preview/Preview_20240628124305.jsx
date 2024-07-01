@@ -114,6 +114,7 @@ function Preview({
       ) : (
         <p> No user data available</p>
       )}
+      ;
     </div>
   );
 }

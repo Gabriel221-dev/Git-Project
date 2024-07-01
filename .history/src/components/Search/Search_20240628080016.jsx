@@ -16,7 +16,6 @@ function Search({ setData, setIsLoading }) {
     }
     const userData = await data.json();
     setData(userData);
-    setError(error.message);
     setIsLoading(false);
     console.log(userData);
   };

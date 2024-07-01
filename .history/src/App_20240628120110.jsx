@@ -45,9 +45,14 @@ import Preview from "./components/Preview/Preview";
 function App() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
 
   return (
-    <div className="flex flex-col gap-5 h-screen w-100%  justify-center items-center bg-dark-bg">
+    <div className="flex flex-col gap-5 h-screen w-full justify-center items-center bg-dark-bg">
       <Search setData={setData} setIsLoading={setIsLoading} />
       {data && (
         <Preview
@@ -66,6 +71,30 @@ function App() {
           joinedAt={new Date(data.created_at).toLocaleDateString()}
         />
       )}
+      <div
+        className={`App ${
+          isDarkMode ? "dark" : ""
+        } min-h-screen flex flex-col items-center gap-5`}
+      >
+        <div
+          className={`w-full p-5 ${
+            isDarkMode
+              ? "bg-dark-background text-dark-text"
+              : "bg-light-green text-light-text"
+          }`}
+        >
+          <button
+            onClick={toggleTheme}
+            className={`${
+              isDarkMode
+                ? "bg-dark-primary text-dark-text"
+                : "bg-light-primary text-light-text"
+            } p-2 rounded-md`}
+          >
+            Switch to {isDarkMode ? "Light" : "Dark"} Mode
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -45,9 +45,14 @@ import Preview from "./components/Preview/Preview";
 function App() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
 
   return (
-    <div className="flex flex-col gap-5 h-screen w-100%  justify-center items-center bg-dark-bg">
+    <div className="flex flex-col gap-5 h-screen w-100% justify-content items-center bg-dark-bg">
       <Search setData={setData} setIsLoading={setIsLoading} />
       {data && (
         <Preview

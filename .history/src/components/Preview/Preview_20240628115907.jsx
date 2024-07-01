@@ -16,7 +16,7 @@ function Preview({
   joinedAt,
 }) {
   return (
-    <div className="bg-dark-gray p-5 flex text-white justify-center rounded-md ">
+    <div className="bg-light-green p-5 flex text-white justify-center rounded-md ">
       {!isLoading ? (
         <div className="flex flex-col gap-4">
           <div className="flex gap-10 items-center">

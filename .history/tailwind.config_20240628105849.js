@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+    width:{
+
+    },
       colors:{
         "dark-bg":"#141c2e",
         "dark-gray":"#1e2b48",

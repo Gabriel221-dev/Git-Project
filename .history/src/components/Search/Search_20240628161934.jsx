@@ -46,6 +46,7 @@ function Search({ setData, setIsLoading }) {
           type="text"
           placeholder="Search Github Username..."
         />
+        {error && <p className="text-errorRed">{error}</p>}
       </div>
       <div>
         <button

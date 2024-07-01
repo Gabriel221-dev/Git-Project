@@ -13,6 +13,7 @@ function Search({ setData, setIsLoading }) {
       } else {
         throw new Error("something went wrong. Please try again");
       }
+      return "";
     }
     const userData = await data.json();
     setData(userData);

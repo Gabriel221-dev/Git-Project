@@ -3,32 +3,44 @@ import React, { useEffect, useState } from "react";
 function Search({ setData, setIsLoading }) {
   const [userName, setUserName] = useState("adjeneg21");
   const [error, setError] = useState("");
+
   const handleClick = async () => {
-    setIsLoading(true);
-    setError("");
-    const data = await fetch(`https://api.github.com/users/${userName}`);
-    if (!data.ok) {
-      if (data.status === 404) {
-        throw new Error("user not found");
-      } else {
-        throw new Error("something went wrong. Please try again");
-      }
+    if (!userName.trim()) {
+      setError("Please enter a GitHub username.");
+      setData(null); // Clear previous data
+      return;
     }
-    const userData = await data.json();
-    setData(userData);
-    setError(error.message);
-    setIsLoading(false);
-    console.log(userData);
+
+    setIsLoading(true);
+    setError(""); // Clear previous error
+
+    try {
+      const response = await fetch(`https://api.github.com/users/${userName}`);
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("User not found.");
+        } else {
+          throw new Error("Something went wrong. Please try again.");
+        }
+      }
+      const userData = await response.json();
+      setData(userData);
+    } catch (err) {
+      setError(err.message);
+      setData(null); // Clear previous data
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     handleClick();
   }, []);
+
   return (
-    <div className="flex bg-dark-gray p-3 gap-5 rounded-md shadow-lg ">
+    <div className="flex flex-col items-center gap-3 bg-dark-gray p-3 rounded-md shadow-lg">
       <div className="flex items-center gap-3">
         <span>
-          {" "}
           <svg
             className="text-dark-blue"
             viewBox="0 0 1024 1024"
@@ -47,14 +59,13 @@ function Search({ setData, setIsLoading }) {
           placeholder="Search Github Username..."
         />
       </div>
-      <div>
-        <button
-          onClick={handleClick}
-          className="bg-dark-blue rounded-lg px-3 py-2 text-white shadow-md "
-        >
-          Search
-        </button>
-      </div>
+      <button
+        onClick={handleClick}
+        className="bg-dark-blue rounded-lg px-3 py-2 text-white shadow-md"
+      >
+        Search
+      </button>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 }
