@@ -17,9 +17,9 @@ steps:
       path: '/storage'
 - id: push-image
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'eu.gcr.io/codematic-playground/git-project:$SHORT_SHA']
+  args: ['push', 'eu.gcr.io/codematic-shared-environment/elysian-website:$SHORT_SHA']
 - id: deploy-image
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', '$_GCP_SERVICE_NAME', '--image', 'eu.gcr.io/codematic-playground/git-project:$SHORT_SHA', '--region', 'us-west2']
-images: ['eu.gcr.io/codematic-playground/git-project:$SHORT_SHA']
+  args: ['run', 'deploy', '$_GCP_SERVICE_NAME', '--image', 'eu.gcr.io/codematic-shared-environment/elysian-website:$SHORT_SHA', '--region', 'us-west2']
+images: ['eu.gcr.io/codematic-shared-environment/elysian-website:$SHORT_SHA']
