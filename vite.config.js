@@ -13,8 +13,15 @@ export default defineConfig(({ mode }) => {
   console.log(env.PORT);
   return {
     plugins: [react()],
+
+    preview: {
+      port: PORT,
+      strictPort: true,
+    },
     server: {
       port: PORT,
+      host: true,
+      origin: `http://0.0.0.0:${PORT}`,
     },
   };
 });
